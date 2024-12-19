@@ -267,21 +267,22 @@ extension CameraViewController: CameraServiceDelegate {
                                 size: resolution.size))
 
         // Preview image
-        let filteredImage = filterIfNeeded(image: ciImage, forPreview: true)
-        self.currentCIImage = filteredImage ?? ciImage
+      let filteredImage = filterIfNeeded(image: ciImage, forPreview: false) ?? ciImage
+      self.currentCIImage = filteredImage
 
         // Record if started
         guard state == .recording else { return }
-        Task {
-            guard let filteredImage = filterIfNeeded(image: ciImage, forPreview: false)
-            else { return }
-            videoRecorder?.addToRecord(image: filteredImage,
-                                       presentationTime: CMSampleBufferGetPresentationTimeStamp(sampleBuffer),
-                                       applyFilter: nil)
-            if firstFrameImage == nil {
-                self.firstFrameImage = filteredImage
-            }
-        }
+      videoRecorder?.addToRecord(image: filteredImage,
+                                 presentationTime: CMSampleBufferGetPresentationTimeStamp(sampleBuffer),
+                                 applyFilter: nil)
+      if firstFrameImage == nil {
+        self.firstFrameImage = filteredImage
+      }
+//        Task {
+//            guard let filteredImage = filterIfNeeded(image: ciImage, forPreview: false)
+//            else { return }
+
+//        }
     }
     
     func filterIfNeeded(image: CIImage, forPreview isPreview: Bool) -> CIImage? {

@@ -11,10 +11,15 @@ import CameraKit
 struct DemoCameraView: View {
     
     @State var viewModel = DemoCameraViewModel()
-    
+    @State private var isAnimated = false
+
     var body: some View {
         NavigationStack {
             VStack {
+              Circle()
+                .fill(.red)
+                .frame(width: 50)
+                .scaleEffect(isAnimated ? 0.8 : 1)
                 cameraPreviewView
                 buttonsView
                 if let _ = viewModel.errorMessage {
@@ -40,7 +45,7 @@ struct DemoCameraView: View {
             .overlay {
                 CameraPickerView(
                     cameraSessionDelegate: viewModel,
-                    captureMode: .video(resolution: .custom(width: 480, height: 480), frameRate: 30),
+                    captureMode: .video(resolution: .custom(width: 480, height: 480), frameRate: 60),
                     cameraDirection: .front,
                     isMicEnabled: false,
                     videoFilter: .removeBackground
@@ -102,6 +107,9 @@ struct DemoCameraView: View {
         .onTapGesture {
             guard viewModel.state == .readyToRecord else { return }
             viewModel.startRecording()
+          withAnimation(.easeInOut.repeatForever()) {
+            isAnimated = true
+          }
         }
         .padding(.horizontal, 10)
     }

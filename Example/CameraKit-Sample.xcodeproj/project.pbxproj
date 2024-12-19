@@ -261,7 +261,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CameraKit-Sample/Preview Content\"";
-				DEVELOPMENT_TEAM = C5MF583N8Y;
+				DEVELOPMENT_TEAM = RY2PUYVX4Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs this access";
@@ -292,7 +292,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CameraKit-Sample/Preview Content\"";
-				DEVELOPMENT_TEAM = C5MF583N8Y;
+				DEVELOPMENT_TEAM = RY2PUYVX4Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs this access";
